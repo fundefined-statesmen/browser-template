@@ -11,7 +11,7 @@ Create an e-commerce site for famed retail giant, Nozama.com! Naturally, the sit
   - CSS/Sass
   - JavaScript
   - Imgur
-  - SpriteJS
+  - Stripe JS
   - JQuery
   - Bootstrap 
 
