@@ -14,13 +14,19 @@
          <!-- Navbar content -->
          <nav class="navbar navbar-dark bg-dark text-white">
             <h1>Nozama.com!</h1>
-            <a class="navbar-brand" href="#">
+            <a id="sign-in" class="navbar-brand" href="#">
             SignIn
+            </a>
+            <a id="change-password" class="navbar-brand" href="#">
+            Change Password
+            </a>
+            <a id="sign-out" class="navbar-brand" href="#">
+            Sign Out
             </a>
          </nav>
       </section>
       <section>
-         <form id="sign-up" class="form sign-up">
+         <form id="sign-up-form" class="form sign-up-form">
             <legend>Sign Up</legend>
             <div class="input-group">
                <div class="input-group-prepend">
@@ -44,7 +50,7 @@
                <button class="btn btn--form sign-up-button" type="submit"><span>Register</span></button>
             </div>
          </form>
-         <form id="sign-in" class="form sign-in">
+         <form id="sign-in-form" class="form sign-in-form">
             <legend>Sign In</legend>
             <div class="input-group">
                <div class="input-group-prepend">
@@ -66,7 +72,7 @@
          </form>
       </section>
       <section>
-         <form id="change-password" class="form change-password">
+         <form id="change-password-form" class="form change-password-form">
             <legend>Change Password</legend>
             <div class="input-group">
                <div class="input-group-prepend">
@@ -85,5 +91,6 @@
             </div>
          </form>
       </section>
+
    </body>
 </html>
