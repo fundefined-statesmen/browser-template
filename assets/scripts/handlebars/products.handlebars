@@ -1,9 +1,9 @@
 {{#each products as |product|}}
 
 <div id="product-id-{{product.id}}" class="product">
-  <img id="product-image-{{product.id}}" class="product-image" src="{{product.url}}" alt="">
+  <img id="product-img-{{product.id}}" class="product-img" src="{{product.img_url}}" alt="">
   <h1 id="product-name-{{product.id}}" class="product-name">{{product.name}}</h1>
-  <p id="product-description-{{product.id}}" class="product-description">{{product.description}}</p>
+  <p id="product-desc-{{product.id}}" class="product-desc">{{product.desc}}</p>
   <p id="product-price-{{product.id}}" class="product-price">{{product.price}}</p>
 </div>
 
