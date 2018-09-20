@@ -10,6 +10,9 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
    </head>
    <body>
+       <div id="message-modal" class="message-modal d-none">
+         <p id="message-modal-content" class="message-modal-content" status='normal'></p>
+       </div>
       <section>
          <!-- Navbar content -->
          <nav class="navbar navbar-dark bg-dark text-white">
@@ -93,16 +96,12 @@
       </section>
       <section id="products" class="products">
         Products
-        <div id="product-id-{{product.id}}" class="product">
-          <img id="product-img-{{product.id}}" class="product-img" src="https://soteriawellness.com/wp-content/uploads/2018/05/demo-image.jpg" alt="">
-          <h1 id="product-name-{{product.id}}" class="product-name">{{product.name}}</h1>
-          <p id="product-desc-{{product.id}}" class="product-desc">{{product.desc}}</p>
-          <p id="product-price-{{product.id}}" class="product-price">{{product.price}}</p>
-        </div>
       </section>
       <section id="shopping-cart" class="shopping-cart">
         Shopping carts
-        <!-- add shopping cart -->
+      </section>
+      <section id="previous-orders" class="previous-orders">
+        Previous orders
       </section>
    </body>
 </html>
