@@ -9,13 +9,21 @@ const onSignUp = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   api.signUp(data)
+    .then(() => onSignIn(event))
     .then(ui.signUpSuccess)
     .catch(ui.signUpFail)
 }
 
-const storeUserToken = (response) => {
+// Sign In
+const storeUserToken = function (response) {
   store.user = response.user
   return response
+}
+
+const getOpenOrder = function (response) {
+  api.getOpenOrder()
+    .then(ui.getOpenOrderSuccess)
+    .catch(ui.getOpenOrderFail)
 }
 
 const onSignIn = function (event) {
@@ -24,6 +32,7 @@ const onSignIn = function (event) {
   api.signIn(data)
     .then(storeUserToken)
     .then(ui.signInSuccess)
+    .then(getOpenOrder)
     .catch(ui.signInFail)
 }
 

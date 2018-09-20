@@ -40,9 +40,20 @@ const signOut = function () {
   })
 }
 
+const getOpenOrder = function () {
+  return $.ajax({
+    url: config.apiUrl + '/orders',
+    method: 'GET',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  getOpenOrder
 }
