@@ -18,12 +18,12 @@ const showCart = function (response) {
   $('#shopping-cart').html(orderElement)
 }
 
-const indexOrders = function () {
-  $('#sign-up-form input').val('')
-  messageModal('Fail to sign up', 'fail')
+const showPreviousOrders = function (response) {
+  const orderElement = ordersTemplate({ orders: response.orders })
+  $('#previous-orders').html(orderElement)
 }
 
 module.exports = {
   showCart,
-  indexOrders
+  showPreviousOrders
 }

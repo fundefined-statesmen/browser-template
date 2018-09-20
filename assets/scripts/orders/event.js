@@ -19,12 +19,10 @@ const showCart = function (event) {
 //
 const showPreviousOrders = function (event) {
   event.preventDefault()
-  api.index(data)
-    .then(storeUserToken)
-    .then(ui.signInSuccess)
+  api.index()
+    .then(ui.showPreviousOrders)
     .catch(ui.signInFail)
 }
-
 
 const addHandlers = function () {
   $('#shopping-cart-button').on('click', showCart)
