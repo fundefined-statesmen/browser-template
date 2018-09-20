@@ -23,7 +23,19 @@ const index = function () {
   })
 }
 
+const create = function () {
+  return $.ajax({
+    data: {'order': {}},
+    url: config.apiUrl + '/orders',
+    method: 'POST',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   index,
-  show
+  show,
+  create
 }
