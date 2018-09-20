@@ -1,5 +1,7 @@
 'use strict'
 
+const store = require('../store.js')
+
 const messageModal = (message, status) => {
   // Modal status: normal, success, fail
   $('#message-modal .message-modal-content').text(message)
@@ -52,6 +54,20 @@ const signOutFail = function () {
   messageModal('Sign out fail', 'fail')
 }
 
+const getOpenOrderSuccess = function (response) {
+  messageModal('getOpenOrder Success', 'success')
+  // console.log('orders', response.orders)
+  // getting the first order which is also the open order
+  const openOrder = response.orders.filter(order => order.status === 'open')[0]
+  // console.log('openOrder', openOrder)
+  store.openOrderId = openOrder._id
+  // console.log('store.openOrderId', store.openOrderId)
+}
+
+const getOpenOrderFail = function (response) {
+  messageModal('getOpenOrder Fail', 'fail')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFail,
@@ -60,5 +76,14 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFail,
   signOutSuccess,
-  signOutFail
+  signOutFail,
+  getOpenOrderSuccess,
+  getOpenOrderFail
 }
+
+// db.orders.insert({
+//   date: '2018-09-19T22:34:43.747Z',
+//   status: 'open',
+//   line_item: [],
+//   owner: '5ba2cf03b54ec536ecb8ce12'
+// })
