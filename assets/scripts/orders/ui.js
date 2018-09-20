@@ -1,4 +1,5 @@
 'use strict'
+const ordersTemplate = require('../handlebars/orders.handlebars')
 
 const messageModal = (message, status) => {
   // Modal status: normal, success, fail
@@ -11,9 +12,10 @@ const messageModal = (message, status) => {
 }
 
 // Sign Up
-const showCart = function () {
-  $('#sign-up-form input').val('')
-  messageModal('You have signed up', 'success')
+const showCart = function (response) {
+  console.log(response.order) // expect 1 array
+  const orderElement = ordersTemplate({ orders: [response.order] })
+  $('#shopping-cart').html(orderElement)
 }
 
 const indexOrders = function () {
@@ -22,12 +24,6 @@ const indexOrders = function () {
 }
 
 module.exports = {
-  shoCart,
+  showCart,
   indexOrders
-  signInSuccess,
-  signInFail,
-  changePasswordSuccess,
-  changePasswordFail,
-  signOutSuccess,
-  signOutFail
 }
