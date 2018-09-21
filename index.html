@@ -13,28 +13,28 @@
        <div id="message-modal" class="message-modal d-none">
          <p id="message-modal-content" class="message-modal-content" status='normal'></p>
        </div>
-      <section>
+      <section id="state-navbar" class="state-navbar">
          <!-- Navbar content -->
          <nav class="navbar navbar-dark bg-dark text-white">
             <h1>Nozama.com!</h1>
-            <a id="sign-in" class="navbar-brand" href="#">
+            <a id="login-button" class="navbar-brand" href="#">
             SignIn
             </a>
-            <a id="change-password" class="navbar-brand" href="#">
+            <a id="change-password-button" class="navbar-brand d-none" href="#">
             Change Password
             </a>
-            <a id="sign-out" class="navbar-brand" href="#">
+            <a id="sign-out-button" class="navbar-brand d-none" href="#">
             Sign Out
             </a>
-            <a id='shopping-cart-button' class="navbar-brand" href="#">
+            <a id='shopping-cart-button' class="navbar-brand d-none" href="#">
               Cart
             </a>
-            <a id='previous-orders-button' class="navbar-brand" href="#">
+            <a id='previous-orders-button' class="navbar-brand d-none" href="#">
               Previous Orders
             </a>
          </nav>
       </section>
-      <section>
+      <section id="state-credentials" class="state-credentials d-none">
          <form id="sign-up-form" class="form sign-up-form">
             <legend>Sign Up</legend>
             <div class="input-group">
@@ -80,7 +80,7 @@
             </div>
          </form>
       </section>
-      <section>
+      <section id="state-change-password" class="state-change-password d-none">
          <form id="change-password-form" class="form change-password-form">
             <legend>Change Password</legend>
             <div class="input-group">
@@ -103,10 +103,10 @@
       <section id="products" class="products">
         Products
       </section>
-      <section id="shopping-cart" class="shopping-cart">
+      <section id="shopping-cart" class="shopping-cart d-none">
         Shopping carts
       </section>
-      <section id="previous-orders" class="previous-orders">
+      <section id="previous-orders" class="previous-orders d-none">
         Previous orders
       </section>
    </body>
