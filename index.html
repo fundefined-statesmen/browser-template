@@ -116,5 +116,47 @@
         </section>
         <section id="previous-orders" class="previous-orders"></section>
       </section>
+
+      <!-- stripe sripte stuff -->
+<script src="https://checkout.stripe.com/checkout.js"></script>
+
+<button id="customButton">Purchase</button>
+
+<script>
+const handler = StripeCheckout.configure({
+  key: 'pk_test_LWGkLPvWiwQnlpGbYoQ45aGm',
+  image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+  locale: 'auto',
+  token: function(token) {
+    console.log(token.email)
+    console.log(token)
+
+  $.ajax({
+    url:'http://localhost:4741/charge',
+    method: 'POST',
+    data:{
+      stripeEmail: token.email,
+      stripeToken: 'tok_visa'
+    }
+  })
+  }
+})
+
+document.getElementById('customButton').addEventListener('click', function(e) {
+  // Open Checkout with further options:
+  handler.open({
+    name: 'Stripe.com',
+    description: '2 widgets',
+    zipCode: true,
+    amount: 2000
+  });
+  e.preventDefault();
+});
+
+// Close Checkout on page navigation:
+window.addEventListener('popstate', function() {
+  handler.close();
+});
+</script>
    </body>
 </html>
