@@ -71,6 +71,11 @@ const onSignOut = function (event) {
   event.preventDefault()
   api.signOut()
     .then(ui.signOutSuccess)
+    .then(() => {
+      store.user = null
+      store.openOrderId = null
+      console.log(store)
+    })
     .catch(ui.signOutFail)
 }
 

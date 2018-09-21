@@ -5,6 +5,7 @@ const ui = require('./ui')
 const lineItemApi = require('../lineitems/api')
 const store = require('../store')
 const orderAPI = require('../orders/api')
+const authUI = require('../auth/ui')
 
 const onGetAllProducts = function () {
   api.getAllProducts()
@@ -13,6 +14,11 @@ const onGetAllProducts = function () {
 }
 
 const onAddToCart = function (event) {
+  // show credentials when users are not sign in
+  if (!store.user) {
+    authUI.showCredentials()
+    return
+  }
   const productId = $(event.target).parent().attr('data-id')
   // create line item with product id
   // get open order id from store

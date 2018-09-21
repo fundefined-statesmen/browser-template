@@ -47,9 +47,25 @@ const update = function (data) {
   })
 }
 
+const removeProduct = function (lineitemId) {
+  return $.ajax({
+    url: config.apiUrl + '/orders/' + store.openOrderId + '/pull',
+    method: 'PATCH',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    },
+    data: {
+      order: {
+        line_item: lineitemId
+      }
+    }
+  })
+}
+
 module.exports = {
   index,
   show,
   create,
-  update
+  update,
+  removeProduct
 }

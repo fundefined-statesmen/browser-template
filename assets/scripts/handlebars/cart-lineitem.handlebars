@@ -1,0 +1,7 @@
+{{#each line_item as |lineitem|}}
+
+  <div id="lineitem-{{lineitem.id}}" class="lineitem" data-id="{{lineitem.id}}">
+    {{> cart-product product=lineitem.product_id}}
+  </div>
+
+{{/each}}
