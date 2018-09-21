@@ -1,7 +1,6 @@
 'use strict'
 const shoppingCartTemplate = require('../handlebars/shopping-cart.handlebars')
 const previousOrdersTemplate = require('../handlebars/previousorders.handlebars')
-const ordersTemplate = require('../handlebars/orders.handlebars')
 
 // Sign Up
 const showCart = function (response) {
