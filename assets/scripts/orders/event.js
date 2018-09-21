@@ -31,7 +31,7 @@ const removeProduct = function (event) {
 
   api.removeProduct(lineitemId)
     .then((response) => {
-      ui.removeProductSuccess(lineitemId)
+      ui.removeProductSuccess(lineitemId, $(event.target).siblings('.product-price'))
       return response
     })
     .catch(console.err)
@@ -39,7 +39,7 @@ const removeProduct = function (event) {
 
 const addHandlers = function () {
   $('#shopping-cart-button').on('click', showCart)
-  $('#shopping-cart').on('click', 'button', removeProduct)
+  $('#shopping-cart').on('click', '.product button', removeProduct)
   $('#previous-orders-button').on('click', showPreviousOrders)
   $('.cancel-button').on('click', ui.showProductsOnly)
 }

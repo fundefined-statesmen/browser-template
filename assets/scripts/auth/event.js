@@ -31,7 +31,10 @@ const getOpenOrder = function (response) {
 const storeOpenOrder = function (response) {
   // console.log('orders', response.orders)
   // getting the first order which is also the open order
-  const openOrder = response.orders.filter(order => order.status === 'open')[0]
+  let openOrder
+  if (response.orders !== null) {
+    openOrder = response.orders.filter(order => order.status === 'open')[0]
+  }
   // console.log('openOrder', openOrder)
   if (openOrder) {
     store.openOrderId = openOrder._id
