@@ -1,15 +1,7 @@
 'use strict'
 const shoppingCartTemplate = require('../handlebars/shopping-cart.handlebars')
-
-const messageModal = (message, status) => {
-  // Modal status: normal, success, fail
-  $('#message-modal .message-modal-content').text(message)
-  $('#message-modal .message-modal-content').attr('status', status)
-  $('#message-modal').removeClass('d-none')
-  setTimeout(() => {
-    $('#message-modal').addClass('d-none')
-  }, 1500)
-}
+const previousOrdersTemplate = require('../handlebars/previousorders.handlebars')
+const ordersTemplate = require('../handlebars/orders.handlebars')
 
 // Sign Up
 const showCart = function (response) {
@@ -23,8 +15,9 @@ const showCart = function (response) {
 
 const showPreviousOrders = function (response) {
   console.log(response.orders)
-  // const orderElement = ordersTemplate({ orders: response.orders })
-  // $('#previous-orders').html(orderElement)
+  const orders = response.orders
+  const orderElement = previousOrdersTemplate({orders})
+  $('#previous-orders').html(orderElement)
   $('#state-previous-orders').removeClass('d-none')
   $('#state-products').addClass('d-none')
   $('#state-shopping-cart').addClass('d-none')
