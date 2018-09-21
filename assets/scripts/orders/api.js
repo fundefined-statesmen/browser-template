@@ -25,7 +25,6 @@ const index = function () {
 
 const create = function () {
   return $.ajax({
-    data: {'order': {}},
     url: config.apiUrl + '/orders',
     method: 'POST',
     headers: {
@@ -34,8 +33,23 @@ const create = function () {
   })
 }
 
+const update = function (data) {
+  console.log('data.order', data.order)
+  return $.ajax({
+    url: config.apiUrl + '/orders/' + data.id,
+    method: 'PATCH',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    },
+    data: {
+      order: data.order
+    }
+  })
+}
+
 module.exports = {
   index,
   show,
-  create
+  create,
+  update
 }
