@@ -11,15 +11,14 @@ const onGetAllProducts = function () {
     .then(ui.onGetAllProductsSuccess)
     .catch(ui.onGetAllProductsFail)
 }
+
 const onAddToCart = function (event) {
   const productId = $(event.target).parent().attr('data-id')
-  console.log('productId; ', productId)
   // create line item with product id
   // get open order id from store
   // update order with line item id
   lineItemApi.create(productId)
     .then((response) => {
-      console.log('lineitem.id', response.lineItem.id)
       const data = {
         id: store.openOrderId,
         order: {
@@ -28,9 +27,7 @@ const onAddToCart = function (event) {
       }
       return orderAPI.update(data)
     })
-    .then((response) => {
-      console.log(response)
-    })
+    .then(ui.onAddToCart)
     .catch((err) => { console.err(err) })
 }
 
