@@ -13,7 +13,6 @@ const messageModal = (message, status) => {
 // Sign Up
 const signUpSuccess = function () {
   $('#sign-up-form input').val('')
-  messageModal('You have signed up', 'success')
 }
 
 const signUpFail = function () {
@@ -24,7 +23,6 @@ const signUpFail = function () {
 // Sign in
 const signInSuccess = function () {
   $('#sign-in-form input').val('')
-  messageModal('You have signed in', 'success')
   $('#state-credentials').addClass('d-none')
   $('#login-button').addClass('d-none')
   $('#state-products').removeClass('d-none')
@@ -69,7 +67,6 @@ const signOutFail = function () {
 
 // getOpenOrder
 const getOpenOrderSuccess = function () {
-  messageModal('getOpenOrder Success', 'success')
 }
 
 const getOpenOrderFail = function () {
@@ -77,7 +74,6 @@ const getOpenOrderFail = function () {
 }
 
 const createOpenOrderSuccess = function () {
-  messageModal('Created Open Order', 'success')
 }
 
 const createOpenOrderFail = function () {
