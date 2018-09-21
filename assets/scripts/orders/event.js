@@ -24,8 +24,22 @@ const showPreviousOrders = function (event) {
     .catch(ui.signInFail)
 }
 
+const removeProduct = function (event) {
+  event.preventDefault()
+  // use lineitem id to remove instead of product id
+  const lineitemId = $(event.target).closest('.lineitem').attr('data-id')
+
+  api.removeProduct(lineitemId)
+    .then((response) => {
+      ui.removeProductSuccess(lineitemId)
+      return response
+    })
+    .catch(console.err)
+}
+
 const addHandlers = function () {
   $('#shopping-cart-button').on('click', showCart)
+  $('#shopping-cart').on('click', 'button', removeProduct)
   $('#previous-orders-button').on('click', showPreviousOrders)
   $('.cancel-button').on('click', ui.showProductsOnly)
 }

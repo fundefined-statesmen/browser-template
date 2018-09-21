@@ -5,13 +5,20 @@ const ui = require('./ui')
 const lineItemApi = require('../lineitems/api')
 const store = require('../store')
 const orderAPI = require('../orders/api')
+const authUI = require('../auth/ui')
 
 const onGetAllProducts = function () {
   api.getAllProducts()
     .then(ui.onGetAllProductsSuccess)
     .catch(ui.onGetAllProductsFail)
 }
+
 const onAddToCart = function (event) {
+  // show credentials when users are not sign in
+  if (!store.user) {
+    authUI.showCredentials()
+    return
+  }
   const productId = $(event.target).parent().attr('data-id')
   console.log('productId; ', productId)
   // create line item with product id
