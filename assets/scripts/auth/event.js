@@ -40,7 +40,9 @@ const storeOpenOrder = function (response) {
     // am I going to get back an array of orders from create or
     // am I getting back one open order object
     ordersApi.create()
-      .then(storeOpenOrder)
+      .then((responseOpenOrder) => {
+        store.openOrderId = responseOpenOrder.order.id
+      })
       .then(ui.createOpenOrderSuccess)
       .catch(ui.createOpenOrderFail)
   }
