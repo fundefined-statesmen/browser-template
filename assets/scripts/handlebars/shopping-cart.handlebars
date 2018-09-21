@@ -1,0 +1,11 @@
+
+{{#each orders as |order|}}
+
+<div id="order-id-{{order.id}}" class="order">
+  <h4 id="order-header-{{order.id}}" class="order-header">Ordered on {{order.date}}</h4>
+  <div class="order-items">
+    {{> cart-lineitem line_item=order.line_item}}
+  </div>
+</div>
+
+{{/each}}

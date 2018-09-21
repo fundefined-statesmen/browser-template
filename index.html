@@ -1,17 +1,120 @@
 <!DOCTYPE html>
 <html>
-    <head>
+   <head>
       <title>Example</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
-
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body>
-      <h1>Browser Template</h1>
-    </body>
+   </head>
+   <body>
+       <div id="message-modal" class="message-modal d-none">
+         <p id="message-modal-content" class="message-modal-content" status='normal'></p>
+       </div>
+      <section id="state-navbar" class="state-navbar">
+         <!-- Navbar content -->
+         <nav class="navbar navbar-dark bg-dark text-white">
+            <h1 class="cancel-button">Nozama.com!</h1>
+            <a id="login-button" class="navbar-brand" href="#">
+            SignIn
+            </a>
+            <a id="change-password-button" class="navbar-brand d-none" href="#">
+            Change Password
+            </a>
+            <a id="sign-out-button" class="navbar-brand d-none" href="#">
+            Sign Out
+            </a>
+            <a id='shopping-cart-button' class="navbar-brand d-none" href="#">
+              Cart
+            </a>
+            <a id='previous-orders-button' class="navbar-brand d-none" href="#">
+              Previous Orders
+            </a>
+         </nav>
+      </section>
+      <section id="state-credentials" class="state-credentials d-none">
+         <form id="sign-up-form" class="form sign-up-form">
+            <legend>Sign Up</legend>
+            <div class="input-group">
+               <div class="input-group-prepend">
+                  <span class="input-group-text oi oi-envelope-closed"></span>
+               </div>
+               <input class="form-control" type="email" name="credentials[email]" placeholder="Email Address">
+            </div>
+            <div class="input-group">
+               <div class="input-group-prepend">
+                  <span class="input-group-text oi oi-lock-locked"></span>
+               </div>
+               <input class="form-control" type="password" name="credentials[password]" placeholder="Password">
+            </div>
+            <div class="input-group">
+               <div class="input-group-prepend">
+                  <span class="input-group-text oi oi-lock-locked"></span>
+               </div>
+               <input class="form-control" type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+            </div>
+            <div class="input-group">
+               <button class="btn btn--form sign-up-button" type="submit"><span>Register</span></button>
+            </div>
+         </form>
+         <form id="sign-in-form" class="form sign-in-form">
+            <legend>Sign In</legend>
+            <div class="input-group">
+               <div class="input-group-prepend">
+                  <span class="input-group-text oi oi-envelope-closed"></span>
+               </div>
+               <input class="form-control" type="email" name="credentials[email]" placeholder="Email Address">
+            </div>
+            <div class="input-group">
+               <div class="input-group-prepend">
+                  <span class="input-group-text oi oi-lock-locked"></span>
+               </div>
+               <input class="form-control" type="password" name="credentials[password]" placeholder="Password">
+            </div>
+            <div class="input-group">
+               <button class="btn btn--form sign-in-button" type="submit">
+               <span>Login</span>
+               </button>
+            </div>
+         </form>
+      </section>
+      <section id="state-change-password" class="state-change-password d-none">
+         <form id="change-password-form" class="form change-password-form">
+            <legend>Change Password</legend>
+            <div class="input-group">
+               <div class="input-group-prepend">
+                  <span class="input-group-text oi oi-lock-locked"></span>
+               </div>
+               <input class="form-control" type="password" name="passwords[old]" placeholder="Old Password">
+            </div>
+            <div class="input-group">
+               <div class="input-group-prepend">
+                  <span class="input-group-text oi oi-lock-locked"></span>
+               </div>
+               <input class="form-control" type="password" name="passwords[new]" placeholder="New Password">
+            </div>
+            <div class="input-group change-password-button">
+               <button class="btn btn--form" type="submit">Submit</button>
+            </div>
+         </form>
+      </section>
+      <section id="state-products" class="state-products">
+        Products
+        <section id="products" class="products"></section>
+      </section>
+      <section id="state-shopping-cart" class="state-shopping-cart d-none">
+        <section class="shopping-cart-header">
+          <h5>Shopping carts</h5>
+        </section>
+        <section id="shopping-cart" class="shopping-cart"></section>
+      </section>
+      <section id="state-previous-orders" class="state-previous-orders d-none">
+        <section class="previous-orders-header">
+          <h5>Previous orders</h5>
+        </section>
+        <section id="previous-orders" class="previous-orders"></section>
+      </section>
+   </body>
 </html>
