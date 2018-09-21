@@ -24,7 +24,12 @@ const onGetAllProductsFail = function (response) {
   messageModal('Fail to get all products', 'fail')
 }
 
+const onAddToCart = function (response) {
+  messageModal('Added to Cart', 'success')
+}
+
 module.exports = {
   onGetAllProductsSuccess,
-  onGetAllProductsFail
+  onGetAllProductsFail,
+  onAddToCart
 }
