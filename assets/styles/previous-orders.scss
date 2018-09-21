@@ -1,0 +1,10 @@
+.state-previous-orders {
+  & .previous-orders-header {
+    & h5 {
+      display: inline-block;
+    }
+    & .cancel-button {
+      float: right;
+    }
+  }
+}

@@ -27,6 +27,7 @@ const showPreviousOrders = function (event) {
 const addHandlers = function () {
   $('#shopping-cart-button').on('click', showCart)
   $('#previous-orders-button').on('click', showPreviousOrders)
+  $('.cancel-button').on('click', ui.showProductsOnly)
 }
 
 module.exports = {

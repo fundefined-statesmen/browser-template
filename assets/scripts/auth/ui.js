@@ -27,6 +27,7 @@ const signInSuccess = function () {
   messageModal('You have signed in', 'success')
   $('#state-credentials').addClass('d-none')
   $('#login-button').addClass('d-none')
+  $('#state-products').removeClass('d-none')
   $('#change-password-button').removeClass('d-none')
   $('#sign-out-button').removeClass('d-none')
   $('#shopping-cart-button').removeClass('d-none')
@@ -53,10 +54,13 @@ const changePasswordFail = function () {
 const signOutSuccess = function () {
   messageModal('Signed Out', 'success')
   $('#login-button').removeClass('d-none')
+  $('#state-products').removeClass('d-none')
   $('#change-password-button').addClass('d-none')
   $('#sign-out-button').addClass('d-none')
   $('#shopping-cart-button').addClass('d-none')
   $('#previous-orders-button').addClass('d-none')
+  $('#state-shopping-cart').addClass('d-none')
+  $('#state-previous-orders').addClass('d-none')
 }
 
 const signOutFail = function () {
@@ -82,7 +86,8 @@ const createOpenOrderFail = function () {
 
 // hide/show stuff when login-button is clicked
 const showCredentials = function () {
-  $('#state-credentials').removeClass('d-none')
+  $('#state-credentials').toggleClass('d-none')
+  $('#state-products').toggleClass('d-none')
 }
 
 const showChangePasswordForm = function () {

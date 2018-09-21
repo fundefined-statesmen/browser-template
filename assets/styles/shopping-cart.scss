@@ -1,0 +1,10 @@
+.state-shopping-cart {
+  & .shopping-cart-header {
+    & h5 {
+      display: inline-block;
+    }
+    & .cancel-button {
+      float: right;
+    }
+  }
+}
