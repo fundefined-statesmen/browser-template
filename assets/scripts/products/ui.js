@@ -14,8 +14,8 @@ const messageModal = (message, status) => {
 
 // All Products
 const onGetAllProductsSuccess = function (response) {
-  messageModal('Shown Products', 'success')
-  console.log('response.products', response.products)
+  // messageModal('Shown Products', 'success')
+  // console.log('response.products', response.products)
   const productsTemplateHTML = productsTemplate({products: response.products})
   $('#products').html(productsTemplateHTML)
 }

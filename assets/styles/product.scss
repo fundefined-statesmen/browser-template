@@ -1,0 +1,9 @@
+.product {
+  width: 300px;
+  display: inline-block;
+  // transition: all 1s ease-out;
+  transform: all 1s ease-out;
+  & img {
+    width: 297px;
+  }
+}

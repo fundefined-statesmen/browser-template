@@ -1,7 +1,5 @@
 'use strict'
 
-const store = require('../store.js')
-
 const messageModal = (message, status) => {
   // Modal status: normal, success, fail
   $('#message-modal .message-modal-content').text(message)
@@ -24,9 +22,15 @@ const signUpFail = function () {
 }
 
 // Sign in
-const signInSuccess = function (response) {
+const signInSuccess = function () {
   $('#sign-in-form input').val('')
   messageModal('You have signed in', 'success')
+  $('#state-credentials').addClass('d-none')
+  $('#login-button').addClass('d-none')
+  $('#change-password-button').removeClass('d-none')
+  $('#sign-out-button').removeClass('d-none')
+  $('#shopping-cart-button').removeClass('d-none')
+  $('#previous-orders-button').removeClass('d-none')
 }
 
 const signInFail = function () {
@@ -48,24 +52,41 @@ const changePasswordFail = function () {
 // Sign Out
 const signOutSuccess = function () {
   messageModal('Signed Out', 'success')
+  $('#login-button').removeClass('d-none')
+  $('#change-password-button').addClass('d-none')
+  $('#sign-out-button').addClass('d-none')
+  $('#shopping-cart-button').addClass('d-none')
+  $('#previous-orders-button').addClass('d-none')
 }
 
 const signOutFail = function () {
   messageModal('Sign out fail', 'fail')
 }
 
-const getOpenOrderSuccess = function (response) {
+// getOpenOrder
+const getOpenOrderSuccess = function () {
   messageModal('getOpenOrder Success', 'success')
-  // console.log('orders', response.orders)
-  // getting the first order which is also the open order
-  const openOrder = response.orders.filter(order => order.status === 'open')[0]
-  // console.log('openOrder', openOrder)
-  store.openOrderId = openOrder._id
-  // console.log('store.openOrderId', store.openOrderId)
 }
 
-const getOpenOrderFail = function (response) {
+const getOpenOrderFail = function () {
   messageModal('getOpenOrder Fail', 'fail')
+}
+
+const createOpenOrderSuccess = function () {
+  messageModal('Created Open Order', 'success')
+}
+
+const createOpenOrderFail = function () {
+  messageModal('Fail to create open order', 'fail')
+}
+
+// hide/show stuff when login-button is clicked
+const showCredentials = function () {
+  $('#state-credentials').removeClass('d-none')
+}
+
+const showChangePasswordForm = function () {
+  $('#state-change-password').toggleClass('d-none')
 }
 
 module.exports = {
@@ -78,12 +99,9 @@ module.exports = {
   signOutSuccess,
   signOutFail,
   getOpenOrderSuccess,
-  getOpenOrderFail
+  getOpenOrderFail,
+  showCredentials,
+  createOpenOrderSuccess,
+  createOpenOrderFail,
+  showChangePasswordForm
 }
-
-// db.orders.insert({
-//   date: '2018-09-19T22:34:43.747Z',
-//   status: 'open',
-//   line_item: [],
-//   owner: '5ba2cf03b54ec536ecb8ce12'
-// })
