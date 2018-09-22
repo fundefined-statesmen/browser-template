@@ -38,6 +38,19 @@ const showCart = function (response) {
 const showPreviousOrders = function (response) {
   console.log(response.orders)
   const orders = response.orders
+
+  response.orders.map((order) => {
+    let total = 0
+    order.line_item.forEach((lineitem) => {
+      if (lineitem) {
+        total += lineitem.product_id.price
+      }
+    })
+    order.total = (total / 100).toFixed(2)
+    order.date = new Date(order.date).toDateString()
+    return order
+  })
+
   const orderElement = previousOrdersTemplate({orders})
   $('#previous-orders').html(orderElement)
   $('#state-previous-orders').removeClass('d-none')

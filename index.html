@@ -43,77 +43,83 @@
       </nav>
     </div>
   </section>
-  <section id="state-credentials" class="state-credentials d-none">
-    <form id="sign-up-form" class="form sign-up-form">
-      <legend>Sign Up</legend>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text oi oi-envelope-closed"></span>
+
+  <section class="container">
+    <section id="state-credentials" class="state-credentials d-none">
+      <form id="sign-up-form" class="form sign-up-form">
+        <legend>Sign Up</legend>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text oi oi-envelope-closed"></span>
+          </div>
+          <input class="form-control" type="email" name="credentials[email]" placeholder="Email Address">
         </div>
-        <input class="form-control" type="email" name="credentials[email]" placeholder="Email Address">
-      </div>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text oi oi-lock-locked"></span>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text oi oi-lock-locked"></span>
+          </div>
+          <input class="form-control" type="password" name="credentials[password]" placeholder="Password">
         </div>
-        <input class="form-control" type="password" name="credentials[password]" placeholder="Password">
-      </div>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text oi oi-lock-locked"></span>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text oi oi-lock-locked"></span>
+          </div>
+          <input class="form-control" type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
         </div>
-        <input class="form-control" type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
-      </div>
-      <div class="input-group">
-        <button class="btn btn--form sign-up-button" type="submit"><span>Register</span></button>
-      </div>
-    </form>
-    <form id="sign-in-form" class="form sign-in-form">
-      <legend>Sign In</legend>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text oi oi-envelope-closed"></span>
+        <div class="input-group">
+          <button class="btn btn-primary sign-up-button" type="submit"><span>Register</span></button>
         </div>
-        <input class="form-control" type="email" name="credentials[email]" placeholder="Email Address">
-      </div>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text oi oi-lock-locked"></span>
+      </form>
+      <form id="sign-in-form" class="form sign-in-form">
+        <legend>Sign In</legend>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text oi oi-envelope-closed"></span>
+          </div>
+          <input class="form-control" type="email" name="credentials[email]" placeholder="Email Address">
         </div>
-        <input class="form-control" type="password" name="credentials[password]" placeholder="Password">
-      </div>
-      <div class="input-group">
-        <button class="btn btn--form sign-in-button" type="submit">
-          <span>Login</span>
-        </button>
-      </div>
-    </form>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text oi oi-lock-locked"></span>
+          </div>
+          <input class="form-control" type="password" name="credentials[password]" placeholder="Password">
+        </div>
+        <div class="input-group">
+          <button class="btn btn-primary sign-in-button" type="submit">
+            <span>Login</span>
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <section id="state-change-password" class="state-change-password d-none">
+      <form id="change-password-form" class="form change-password-form">
+        <legend>Change Password</legend>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text oi oi-lock-locked"></span>
+          </div>
+          <input class="form-control" type="password" name="passwords[old]" placeholder="Old Password">
+        </div>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text oi oi-lock-locked"></span>
+          </div>
+          <input class="form-control" type="password" name="passwords[new]" placeholder="New Password">
+        </div>
+        <div class="input-group change-password-button">
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </form>
+    </section>
   </section>
-  <section id="state-change-password" class="state-change-password d-none">
-    <form id="change-password-form" class="form change-password-form">
-      <legend>Change Password</legend>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text oi oi-lock-locked"></span>
-        </div>
-        <input class="form-control" type="password" name="passwords[old]" placeholder="Old Password">
-      </div>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text oi oi-lock-locked"></span>
-        </div>
-        <input class="form-control" type="password" name="passwords[new]" placeholder="New Password">
-      </div>
-      <div class="input-group change-password-button">
-        <button class="btn btn--form" type="submit">Submit</button>
-      </div>
-    </form>
-  </section>
-  <section id="state-products" class="state-products">
+
+  <section id="state-products" class="container state-products">
     Products
     <section id="products" class="products"></section>
   </section>
-  <section id="state-shopping-cart" class="state-shopping-cart d-none">
+
+  <section id="state-shopping-cart" class="container state-shopping-cart d-none">
     <section class="shopping-cart-header">
       <h5>Shopping carts</h5>
     </section>
@@ -126,11 +132,15 @@
       <button id="checkout" class="checkout" type="button">Checkout</button>
     </section>
   </section>
-  <section id="state-previous-orders" class="state-previous-orders d-none">
+
+  <section id="state-previous-orders" class="container state-previous-orders d-none">
     <section class="previous-orders-header">
-      <h5>Previous orders</h5>
+      <h5>Orders</h5>
+      <div class="container">
+        <section id="previous-orders" class="previous-orders"></section>
+      </div>
     </section>
-    <section id="previous-orders" class="previous-orders"></section>
+
   </section>
 
   <!-- stripe -->
