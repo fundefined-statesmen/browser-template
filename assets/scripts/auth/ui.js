@@ -59,6 +59,8 @@ const signOutSuccess = function () {
   $('#previous-orders-button').addClass('d-none')
   $('#state-shopping-cart').addClass('d-none')
   $('#state-previous-orders').addClass('d-none')
+  $('#change-password-form input').val('')
+  $('#change-password-form').addClass('d-none')
 }
 
 const signOutFail = function () {
