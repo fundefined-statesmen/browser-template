@@ -15,24 +15,33 @@
   </div>
   <section id="state-navbar" class="state-navbar">
     <!-- Navbar content -->
-    <nav class="navbar navbar-dark bg-dark text-white">
-      <h1 class="cancel-button">Nozama.com!</h1>
-      <a id="login-button" class="navbar-brand" href="#">
-        SignIn
-      </a>
-      <a id="change-password-button" class="navbar-brand d-none" href="#">
-        Change Password
-      </a>
-      <a id="sign-out-button" class="navbar-brand d-none" href="#">
-        Sign Out
-      </a>
-      <a id='shopping-cart-button' class="navbar-brand d-none" href="#">
-        Cart
-      </a>
-      <a id='previous-orders-button' class="navbar-brand d-none" href="#">
-        Previous Orders
-      </a>
-    </nav>
+    <div id="navbar">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand cancel-button" href="#">Nozama</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+         </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a id="login-button" class="nav-link" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+              <a id="change-password-button" class="nav-link d-none" href="#">Change Password</a>
+            </li>
+            <li class="nav-item">
+              <a id="sign-out-button" class="nav-link d-none" href="#">Sign Out</a>
+            </li>
+            <li class="nav-item">
+              <a id="shopping-cart-button" class="nav-link d-none" href="#">Cart</a>
+            </li>
+            <li class="nav-item">
+              <a id="previous-orders-button" class="nav-link d-none" href="#">Orders</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
   </section>
   <section id="state-credentials" class="state-credentials d-none">
     <form id="sign-up-form" class="form sign-up-form">
@@ -126,89 +135,6 @@
 
   <!-- stripe -->
   <script src="https://js.stripe.com/v3/"></script>
-
   <script src="https://checkout.stripe.com/checkout.js"></script>
-
-  <!-- <button id="customButton">Purchase</button> -->
-
-  <!-- <script>
-  var handler = StripeCheckout.configure({
-    key: 'pk_test_LWGkLPvWiwQnlpGbYoQ45aGm',
-    image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
-    locale: 'auto',
-    token: function(token) {
-      // You can access the token ID with `token.id`.
-      // Get the token ID to your server-side code for use.
-      console.log(token)
-
-      // charge user
-      $.ajax({
-        method: 'POST',
-        url: 'http://localhost:4741/charge',
-        data: {
-          stripeEmail: token.email,
-          stripeToken: 'tok_visa'
-        }
-      })
-      .then((response) => {
-        console.log('stripe charge: ', response)
-        const openOrderId = $('#state-shopping-cart').attr('data-openOrderId')
-        const token = $('#state-shopping-cart').attr('data-token')
-        $('#state-shopping-cart').removeAttr('data-token')
-        // close openOrder
-        $.ajax({
-          method: 'PATCH',
-          url: 'http://localhost:4741/orders/' + openOrderId,
-          headers: {
-            'Authorization': 'Token token=' + token
-          },
-          data: {
-            order: {
-              status: 'closed'
-            }
-          }
-        })
-        .then((response) => {
-          const messageModal = (message, status) => {
-            // Modal status: normal, success, fail
-            $('#message-modal .message-modal-content').text(message)
-            $('#message-modal .message-modal-content').attr('status', status)
-            $('#message-modal').removeClass('d-none')
-            setTimeout(() => {
-              $('#message-modal').addClass('d-none')
-            }, 1500)
-          }
-
-          messageModal('Good Job Fuck off now', 'success')
-          $('#login-button').removeClass('d-none')
-          $('#state-products').removeClass('d-none')
-          $('#change-password-button').addClass('d-none')
-          $('#sign-out-button').addClass('d-none')
-          $('#shopping-cart-button').addClass('d-none')
-          $('#previous-orders-button').addClass('d-none')
-          $('#state-shopping-cart').addClass('d-none')
-          $('#state-previous-orders').addClass('d-none')
-        })
-      })
-      .catch(console.err)
-  }
-})
-
-  // document.getElementById('checkout').addEventListener('click', function(e) {
-  //   // Open Checkout with further options:
-  //   handler.open({
-  //     name: 'Stripe.com',
-  //     description: '2 widgets',
-  //     zipCode: true,
-  //     amount: 2000
-  //   });
-  //   e.preventDefault();
-  // });
-
-  // Close Checkout on page navigation:
-  window.addEventListener('popstate', function() {
-    handler.close();
-  });
-  </script> -->
 </body>
 </html>
