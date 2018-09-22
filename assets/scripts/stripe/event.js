@@ -63,7 +63,7 @@ const addHandlers = function () {
     }
   })
 
-  document.getElementById('checkout').addEventListener('click', function (e) {
+  $('body').on('click', '#checkout', function (e) {
     // Open Checkout with further options:
     handler.open({
       name: 'Nozama.com',

@@ -1,7 +1,9 @@
-<div id="product-id-{{product._id}}" data-id="{{product.id}}" class="product box">
+<div id="product-id-{{product._id}}" data-id="{{product.id}}" class="product">
   <img id="product-img-{{product._id}}" class="product-img" src="{{product.img_url}}" alt="">
-  <h1 id="product-name-{{product._id}}" class="product-name">{{product.name}}</h1>
-  <p id="product-desc-{{product._id}}" class="product-desc">{{product.desc}}</p>
-  <p id="product-price-{{product._id}}" class="product-price">{{product.price}}</p>
-  <button id="remove-product-button" type="button">remove from cart</button>
+  <div class="">
+    <h5 id="product-name-{{product._id}}" class="product-name">{{product.name}}</h5>
+    <p id="product-desc-{{product._id}}" class="product-desc">{{product.desc}}</p>
+    <p id="product-price-{{product._id}}" class="product-price">${{product.price}}</p>
+    <button id="remove-product-button" type="button">remove from cart</button>
+  </div>
 </div>
