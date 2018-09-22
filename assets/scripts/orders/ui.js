@@ -2,7 +2,6 @@
 const shoppingCartTemplate = require('../handlebars/shopping-cart.handlebars')
 const previousOrdersTemplate = require('../handlebars/previousorders.handlebars')
 const store = require('../store')
-const stripe = require("https://checkout.stripe.com/checkout.js")
 // show cart
 const showCart = function (response) {
   // check if we have any products in our open order
