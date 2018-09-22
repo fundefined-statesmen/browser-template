@@ -1,10 +1,71 @@
+.clearfix::after { // use on parent for floating element
+  display: block;
+  content: '';
+  clear: both;
+}
+
 .state-shopping-cart {
   & .shopping-cart-header {
-    & h5 {
-      display: inline-block;
+    & h3 { // header "Shopping Cart"
+      padding: 15px;
+      margin: 20px;
     }
-    & .cancel-button {
+  }
+
+  & .order {
+    box-shadow: 0 2px 2px #ccc;
+    padding: 15px;
+    margin: 20px;
+    & h4 {
+      font-size: .8rem;
+      & .total {
+        font-size: 1rem;
+      }
+    }
+    & .product {
+      width: 100%;
+      margin: auto;
+      margin-bottom: 10px;
+      padding: 15px;
+      box-shadow: 0px 1px 0px 0px #ccc;
+      display: flex;
+      flex-direction: row;
+      & img {
+        width: 297px;
+        margin: auto; // stop img from stretching
+      }
+      & div {
+        margin: 10px;
+        padding: 15px;
+        width: 100%;
+        & h5 {
+          color: #0066c0;
+          width: 100%;
+        }
+        & .product-desc {
+          color: #555;
+        }
+        & p {
+          color: #B12704;
+        }
+      }
+    }
+    & .shopping-cart-footer {
       float: right;
+      text-align: right;
+      margin: 20px;
+      padding: 15px;
+      & .total {
+        font-size: 1rem;
+      }
+      & .checkout {
+        padding: 15px;
+        width: 100%;
+        &:hover {
+          background: rgba(41, 156, 69, 1);
+          color: #fefefe;
+        }
+      }
     }
   }
 }

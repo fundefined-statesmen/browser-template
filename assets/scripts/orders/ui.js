@@ -12,21 +12,25 @@ const showCart = function (response) {
     return
   }
 
-  // use shopping cart handlebar
-  const orderElement = shoppingCartTemplate({ orders: [response.order] })
-  $('#shopping-cart').html(orderElement)
-
   // calculate total
   let total = 0
   response.order.line_item.forEach((lineitem) => {
     if (lineitem) {
       total += lineitem.product_id.price
+      lineitem.product_id.price = (lineitem.product_id.price / 100).toFixed(2)
     }
+    return lineitem
   })
   // store total so other components can use it
   store.totalAmount = total
   total /= 100
+
+  // use shopping cart handlebar
+  const orderElement = shoppingCartTemplate({ order: response.order })
+  $('#shopping-cart').html(orderElement)
   // set to two decimal places and display it
+  // make sure put this after the render on order handlebar, otherwise it won't
+  // render total
   $('#total .amount').html(total.toFixed(2))
 
   // hide other state
@@ -38,6 +42,20 @@ const showCart = function (response) {
 const showPreviousOrders = function (response) {
   console.log(response.orders)
   const orders = response.orders
+
+  response.orders.map((order) => {
+    let total = 0
+    order.line_item.forEach((lineitem) => {
+      if (lineitem) {
+        total += lineitem.product_id.price
+        lineitem.product_id.price = (lineitem.product_id.price / 100).toFixed(2)
+      }
+    })
+    order.total = (total / 100).toFixed(2)
+    order.date = new Date(order.date).toDateString()
+    return order
+  })
+
   const orderElement = previousOrdersTemplate({orders})
   $('#previous-orders').html(orderElement)
   $('#state-previous-orders').removeClass('d-none')
@@ -54,7 +72,7 @@ const showProductsOnly = function () {
 }
 
 const removeProductSuccess = function (lineitemId, priceElement) {
-  const productPrice = parseFloat(priceElement.text())
+  const productPrice = parseFloat(priceElement.text().substr(1))
   store.totalAmount -= productPrice
   $('#total .amount').html((store.totalAmount / 100).toFixed(2))
 
