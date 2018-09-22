@@ -18,7 +18,8 @@ const addHandlers = function () {
         url: 'http://localhost:4741/charge',
         data: {
           stripeEmail: token.email,
-          stripeToken: 'tok_visa'
+          stripeToken: 'tok_visa',
+          totalAmount: store.totalAmount
         }
       })
         .then((response) => {
