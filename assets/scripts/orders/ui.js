@@ -72,7 +72,8 @@ const showProductsOnly = function () {
 }
 
 const removeProductSuccess = function (lineitemId, priceElement) {
-  const productPrice = parseFloat(priceElement.text().substr(1))
+  let productPrice = parseFloat(priceElement.text().substr(1))
+  productPrice *= 100
   store.totalAmount -= productPrice
   $('#total .amount').html((store.totalAmount / 100).toFixed(2))
 
