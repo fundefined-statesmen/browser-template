@@ -125,11 +125,13 @@
   </section>
 
   <!-- stripe -->
+  <script src="https://js.stripe.com/v3/"></script>
+
   <script src="https://checkout.stripe.com/checkout.js"></script>
 
   <!-- <button id="customButton">Purchase</button> -->
 
-  <script>
+  <!-- <script>
   var handler = StripeCheckout.configure({
     key: 'pk_test_LWGkLPvWiwQnlpGbYoQ45aGm',
     image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
@@ -138,11 +140,13 @@
       // You can access the token ID with `token.id`.
       // Get the token ID to your server-side code for use.
       console.log(token)
+
       // charge user
       $.ajax({
         method: 'POST',
         url: 'http://localhost:4741/charge',
         data: {
+          stripeEmail: token.email,
           stripeToken: 'tok_visa'
         }
       })
@@ -190,21 +194,21 @@
   }
 })
 
-  document.getElementById('checkout').addEventListener('click', function(e) {
-    // Open Checkout with further options:
-    handler.open({
-      name: 'Stripe.com',
-      description: '2 widgets',
-      zipCode: true,
-      amount: 2000
-    });
-    e.preventDefault();
-  });
+  // document.getElementById('checkout').addEventListener('click', function(e) {
+  //   // Open Checkout with further options:
+  //   handler.open({
+  //     name: 'Stripe.com',
+  //     description: '2 widgets',
+  //     zipCode: true,
+  //     amount: 2000
+  //   });
+  //   e.preventDefault();
+  // });
 
   // Close Checkout on page navigation:
   window.addEventListener('popstate', function() {
     handler.close();
   });
-  </script>
+  </script> -->
 </body>
 </html>

@@ -1,6 +1,5 @@
 'use strict'
 
-const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
 const store = require('../store.js')
@@ -12,11 +11,6 @@ const showCart = function (event) {
     .catch(ui.signUpFail)
 }
 
-// const storeUserToken = (response) => {
-//   store.user = response.user
-//   return response
-// }
-//
 const showPreviousOrders = function (event) {
   event.preventDefault()
   api.index()
