@@ -6,6 +6,15 @@ const ui = require('./ui')
 const ordersApi = require('../orders/api')
 const store = require('../store.js')
 
+const accountDeleteMessageModal = (message, status) => {
+  $('#message-modal .message-modal-content').text(message)
+  $('#message-modal > p').attr('status', status)
+  $('#message-modal > input').attr('status', null)
+  $('#message-modal').removeClass('d-none')
+  $('#delete-account-confirmation').removeClass('d-none')
+  $('#delete-account-denied').removeClass('d-none')
+}
+
 const onSignUp = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -85,6 +94,30 @@ const onSignOut = function (event) {
     .catch(ui.signOutFail)
 }
 
+// confirm that a user wants to delete their account
+const accountDeleteConfirmation = function () {
+  accountDeleteMessageModal('Are you sure you want to delete your account?', 'fail')
+}
+
+// handle a user's denial of actually wanting to delete their account
+const accountDeleteDenial = function () {
+  $('#message-modal, #delete-account-confirmation, #delete-account-denied').addClass('d-none')
+}
+
+// delete a users account
+const deleteAccount = function (event) {
+  event.preventDefault()
+  $('#message-modal, #delete-account-confirmation, #delete-account-denied').addClass('d-none')
+
+  api.deleteAccount()
+    .then(ui.accountDeleted)
+    .then(() => {
+      store.user = null
+      store.openOrderId = null
+    })
+    .catch(ui.deleteAccountFail)
+}
+
 const addHandlers = function () {
   $('#sign-up-form').on('submit', onSignUp)
   $('#sign-in-form').on('submit', onSignIn)
@@ -92,6 +125,9 @@ const addHandlers = function () {
   $('#sign-out-button').on('click', onSignOut)
   $('#login-button').on('click', ui.showCredentials)
   $('#change-password-button').on('click', ui.showChangePasswordForm)
+  $('#delete-account-button').on('click', accountDeleteConfirmation)
+  $('#delete-account-confirmation').on('click', deleteAccount)
+  $('#delete-account-denied').on('click', accountDeleteDenial)
 }
 
 module.exports = {

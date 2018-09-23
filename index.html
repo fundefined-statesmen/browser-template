@@ -12,6 +12,8 @@
 <body>
   <div id="message-modal" class="message-modal d-none">
     <p id="message-modal-content" class="message-modal-content" status='normal'></p>
+    <input type="button" id='delete-account-confirmation' class='message-modal-content yes-button d-none' value="Yes">
+    <input type="button" id='delete-account-denied' class='message-modal-content no-button d-none' value="No">
   </div>
   <section id="state-navbar" class="state-navbar">
     <!-- Navbar content -->
@@ -27,16 +29,19 @@
               <a id="login-button" class="nav-link" href="#">Login</a>
             </li>
             <li class="nav-item">
-              <a id="change-password-button" class="nav-link d-none" href="#">Change Password</a>
+                <a id="shopping-cart-button" class="nav-link d-none" href="#">Cart</a>
+              </li>
+              <li class="nav-item">
+                <a id="previous-orders-button" class="nav-link d-none" href="#">Orders</a>
+              </li>
+                <li class="nav-item">
+                  <a id="change-password-button" class="nav-link d-none" href="#">Change Password</a>
+                </li>
+              <li class="nav-item">
+              <a id="delete-account-button" class="nav-link d-none" href="#">Delete Account</a>
             </li>
             <li class="nav-item">
               <a id="sign-out-button" class="nav-link d-none" href="#">Sign Out</a>
-            </li>
-            <li class="nav-item">
-              <a id="shopping-cart-button" class="nav-link d-none" href="#">Cart</a>
-            </li>
-            <li class="nav-item">
-              <a id="previous-orders-button" class="nav-link d-none" href="#">Orders</a>
             </li>
           </ul>
         </div>
