@@ -74,7 +74,7 @@ const deleteAccountFail = function () {
 }
 
 const accountDeleted = function () {
-  messageModal('Account Deleted')
+  messageModal('Account Deleted', 'success')
   $('#login-button').removeClass('d-none')
   $('#state-products').removeClass('d-none')
   $('#delete-account-button').addClass('d-none')
