@@ -40,9 +40,17 @@
        }
      }
   .no-button {
-    background-color: rgb(194, 230, 203);
+    background-color: rgba(194, 230, 203, .7);
+      &:hover {
+        background: rgba(41, 156, 69, 1);
+        color: #fefefe;
      }
+   }
   .yes-button {
     background-color: rgb(244, 198, 203);
+    &:hover {
+      background: rgb(255, 0, 0);
+      color: #fefefe;
+    }
   }
   }
