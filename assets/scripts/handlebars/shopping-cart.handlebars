@@ -1,11 +1,13 @@
-
-{{#each orders as |order|}}
-
-<div id="order-id-{{order.id}}" class="order">
-  <h4 id="order-header-{{order.id}}" class="order-header">Ordered on {{order.date}}</h4>
-  <div class="order-items">
+<section id="order-id-{{order.id}}" class="order clearfix">
+  <a href="#totalAnchor" class="float-right">TOTAL</a>
+  <section class="order-items">
     {{> cart-lineitem line_item=order.line_item}}
-  </div>
-</div>
-
-{{/each}}
+  </section>
+  <section id="totalAnchor" class="shopping-cart-footer">
+    <h5 id="total" class='total'>
+      TOTAL $
+      <span class="amount"></span>
+    </h5>
+    <button id="checkout" class="checkout" type="button">Checkout</button>
+  </section>
+</section>

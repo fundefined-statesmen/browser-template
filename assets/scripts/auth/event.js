@@ -18,6 +18,7 @@ const onSignUp = function (event) {
 // Sign In
 const storeUserToken = function (response) {
   store.user = response.user
+  $('#state-shopping-cart').attr('data-token', store.user.token)
   return response
 }
 
@@ -31,10 +32,14 @@ const getOpenOrder = function (response) {
 const storeOpenOrder = function (response) {
   // console.log('orders', response.orders)
   // getting the first order which is also the open order
-  const openOrder = response.orders.filter(order => order.status === 'open')[0]
+  let openOrder
+  if (response.orders !== null) {
+    openOrder = response.orders.filter(order => order.status === 'open')[0]
+  }
   // console.log('openOrder', openOrder)
   if (openOrder) {
     store.openOrderId = openOrder._id
+    $('#state-shopping-cart').attr('data-openOrderId', store.openOrderId)
     return response
   } else {
     // am I going to get back an array of orders from create or
@@ -42,6 +47,7 @@ const storeOpenOrder = function (response) {
     ordersApi.create()
       .then((responseOpenOrder) => {
         store.openOrderId = responseOpenOrder.order.id
+        $('#state-shopping-cart').attr('data-openOrderId', store.openOrderId)
       })
       .then(ui.createOpenOrderSuccess)
       .catch(ui.createOpenOrderFail)
