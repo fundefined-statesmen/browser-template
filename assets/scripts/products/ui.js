@@ -14,6 +14,9 @@ const messageModal = (message, status) => {
 
 // All Products
 const onGetAllProductsSuccess = function (response) {
+  response.products.forEach((product) => {
+    product.price /= 100
+  })
   // messageModal('Shown Products', 'success')
   // console.log('response.products', response.products)
   const productsTemplateHTML = productsTemplate({products: response.products})
