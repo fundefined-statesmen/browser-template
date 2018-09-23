@@ -1,3 +1,8 @@
+.clearfix::after { // use on parent for floating element
+  display: block;
+  content: '';
+  clear: both;
+}
 .state-previous-orders {
   & .previous-orders-header {
     & h3 { // header
@@ -5,12 +10,11 @@
       margin: 20px;
     }
   }
-
   & .order {
     box-shadow: 0 2px 2px #ccc;
     padding: 15px;
     margin: 20px;
-    & h4 { // order's header
+    & h4 {
       font-size: .8rem;
       & .total {
         font-size: 1rem;
@@ -26,6 +30,7 @@
       flex-direction: row;
       & img {
         width: 297px;
+        margin: auto; // stop img from stretching
       }
       & div {
         margin: 10px;
@@ -34,11 +39,54 @@
         & h5 {
           color: #0066c0;
           width: 100%;
-
+        }
+        & .product-desc {
+          color: #555;
         }
         & p {
           color: #B12704;
         }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 520px) {
+  .state-previous-orders, .state-navbar {
+    min-width: 320px;
+    & div {
+      padding: 2px;
+      margin: 2px;
+    }
+    & section {
+      padding: 2px;
+      margin: 2px;
+    }
+    & .order {
+      padding: 2px;
+      margin: 2px;
+      margin-bottom: 20px;
+      & .product {
+        padding: 2px;
+        margin: 2px;
+        flex-direction: column;
+        & img {
+          margin: auto;
+          width: 240px;
+          min-width: 240px;
+          min-height: 120px;
+        }
+        & button {
+          display: block;
+          width: auto;
+          margin: auto;
+        }
+      }
+      & .shopping-cart-footer {
+        float: none;
+        margin: 0 auto;
+        text-align: center;
+        & .total {}
+        & .checkout {}
       }
     }
   }
