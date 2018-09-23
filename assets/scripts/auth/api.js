@@ -49,11 +49,21 @@ const getOpenOrder = function () {
     }
   })
 }
+const deleteAccount = function () {
+  return $.ajax({
+    url: config.apiUrl + '/delete-account',
+    method: 'DELETE',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    }
+  })
+}
 
 module.exports = {
   signUp,
   signIn,
   changePassword,
   signOut,
-  getOpenOrder
+  getOpenOrder,
+  deleteAccount
 }
