@@ -1,0 +1,71 @@
+.clearfix::after { // use on parent for floating element
+  display: block;
+  content: '';
+  clear: both;
+}
+
+.state-products {
+  & h1 {
+    text-align: center;
+  }
+  & .products {
+    margin: 20px;
+    column-count: 5;
+    column-width: 200px;
+    column-gap: 0.8em;
+    line-height: 0em; // remove line height btwn cards
+    perspective: 10000px;
+    margin-left: 100px;
+    margin-right: 100px;
+    & .product {
+      display: inline-block;
+      float:none;
+      width: 100%;
+      height: auto;
+      margin: 0px;
+      margin-bottom: 10px;
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+      perspective-origin: center;
+      transition: all 0.5s ease-out;
+      &:hover {
+        background: rgba(0, 0, 0, 0.9);
+        color: rgba(240, 240, 240, 0.9);
+        transform: rotate3d(.5, .5, 1, 1deg);
+        z-index: 20;
+      }
+      & img {
+        width: 100%;
+        padding: 1px;
+      }
+      & h1 {
+        font-size: 1.3em;
+      }
+      & .product-price {
+        text-align: right;
+        font-size: 1em;
+        float: right;
+        padding: 15px;
+        &:hover:after {
+          background: rgba(0, 163, 255, 1);
+        }
+      }
+      & button {
+        margin: 15px;
+        padding: 15px;
+        width: 100%;
+        margin: 0px;
+        height: 30px;
+        color: rgba(245, 245, 245, 1);
+        border: 0;
+        border-radius: 20px;
+      }
+      & p {
+        line-height: 1.5em;
+      }
+      & .info {
+        margin: 10px;
+        padding: 10px;
+      }
+    }
+  }
+}
