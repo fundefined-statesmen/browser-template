@@ -8,7 +8,6 @@ const showCart = function (response) {
   // if we don't have any line item, we will have a null inside line_item as length 1
   // not sure why, but ... , make sure to compare with null
   if (response.order.line_item[0] === null) {
-    console.log('no products')
     return
   }
 
