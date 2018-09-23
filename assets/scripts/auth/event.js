@@ -8,7 +8,8 @@ const store = require('../store.js')
 
 const accountDeleteMessageModal = (message, status) => {
   $('#message-modal .message-modal-content').text(message)
-  $('#message-modal .message-modal-content').attr('status', status)
+  $('#message-modal > p').attr('status', status)
+  $('#message-modal > input').attr('status', null)
   $('#message-modal').removeClass('d-none')
   $('#delete-account-confirmation').removeClass('d-none')
   $('#delete-account-denied').removeClass('d-none')
@@ -95,7 +96,7 @@ const onSignOut = function (event) {
 
 // confirm that a user wants to delete their account
 const accountDeleteConfirmation = function () {
-  accountDeleteMessageModal('Are you sure you want to delete your accout?', 'fail')
+  accountDeleteMessageModal('Are you sure you want to delete your account?', 'fail')
 }
 
 // handle a user's denial of actually wanting to delete their account
