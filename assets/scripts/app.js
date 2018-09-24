@@ -19,4 +19,5 @@ $(() => {
   products.addHandlers()
   stripe.addHandlers()
   navbar.addStyle()
+  $('html').show()
 })
