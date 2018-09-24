@@ -36,30 +36,35 @@ const showCart = function (response) {
   $('#state-shopping-cart').removeClass('d-none')
   $('#state-products').addClass('d-none')
   $('#state-previous-orders').addClass('d-none')
+  $('#state-change-password').addClass('d-none')
 }
 
 const showPreviousOrders = function (response) {
-  console.log(response.orders)
-  const orders = response.orders
-
-  response.orders.map((order) => {
-    let total = 0
-    order.line_item.forEach((lineitem) => {
-      if (lineitem) {
-        total += lineitem.product_id.price
-        lineitem.product_id.price = (lineitem.product_id.price / 100).toFixed(2)
-      }
-    })
-    order.total = (total / 100).toFixed(2)
-    order.date = new Date(order.date).toDateString()
-    return order
-  })
-
-  const orderElement = previousOrdersTemplate({orders})
+  // console.log(response.orders)
+  let orders = response.orders
+  let orderElement
+  if (orders !== null) {
+    orders = response.orders.map((order) => {
+      let total = 0
+      order.line_item.forEach((lineitem) => {
+        if (lineitem) {
+          total += lineitem.product_id.price
+          lineitem.product_id.price = (lineitem.product_id.price / 100).toFixed(2)
+        }
+      })
+      order.total = (total / 100).toFixed(2)
+      order.date = new Date(order.date).toDateString()
+      return order
+    }).filter((order) => order.status === 'closed')
+    orderElement = previousOrdersTemplate({orders})
+  } else {
+    orderElement = 'No previous orders'
+  }
   $('#previous-orders').html(orderElement)
   $('#state-previous-orders').removeClass('d-none')
   $('#state-products').addClass('d-none')
   $('#state-shopping-cart').addClass('d-none')
+  $('#state-change-password').addClass('d-none')
 }
 
 const showProductsOnly = function () {

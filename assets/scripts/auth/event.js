@@ -89,7 +89,7 @@ const onSignOut = function (event) {
     .then(() => {
       store.user = null
       store.openOrderId = null
-      console.log(store)
+      // console.log(store)
     })
     .catch(ui.signOutFail)
 }
@@ -118,6 +118,10 @@ const deleteAccount = function (event) {
     .catch(ui.deleteAccountFail)
 }
 
+const cancelUserForm = function (event) {
+  $('form input').val('')
+}
+
 const addHandlers = function () {
   $('#sign-up-form').on('submit', onSignUp)
   $('#sign-in-form').on('submit', onSignIn)
@@ -128,6 +132,7 @@ const addHandlers = function () {
   $('#delete-account-button').on('click', accountDeleteConfirmation)
   $('#delete-account-confirmation').on('click', deleteAccount)
   $('#delete-account-denied').on('click', accountDeleteDenial)
+  $('#login-button, #change-password-button').on('click', cancelUserForm)
 }
 
 module.exports = {

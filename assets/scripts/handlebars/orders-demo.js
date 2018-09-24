@@ -17,7 +17,7 @@ const getOrdersSuccess = (res) => {
 
   if (order.status === 'open') {
     const ordersTemplateHTML = ordersTemplate({orders: [ order ]})
-    console.log('we are here', ordersTemplateHTML)
+    // console.log('we are here', ordersTemplateHTML)
     $('#shopping-cart').html(ordersTemplateHTML)
   }
 }

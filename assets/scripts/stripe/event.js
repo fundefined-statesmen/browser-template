@@ -4,6 +4,8 @@
 const stripe = Stripe('pk_test_LWGkLPvWiwQnlpGbYoQ45aGm')
 const store = require('../store')
 const ordersApi = require('../orders/api')
+const config = require('../config')
+const messageModal = require('../helpers/modalMessage')
 
 const addHandlers = function () {
   const handler = StripeCheckout.configure({
@@ -11,11 +13,11 @@ const addHandlers = function () {
     image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
     locale: 'auto',
     token: function (token) {
-      console.log('token from stripe', token)
+      // console.log('token from stripe', token)
       // charge user
       $.ajax({
         method: 'POST',
-        url: 'http://localhost:4741/charge',
+        url: config.apiUrl + '/charge',
         data: {
           stripeEmail: token.email,
           stripeToken: 'tok_visa',
@@ -25,10 +27,10 @@ const addHandlers = function () {
         .then((response) => {
           // success on charging user then we
           // close openOrder
-          console.log('response from charging user', response)
+          // console.log('response from charging user', response)
           return $.ajax({
             method: 'PATCH',
-            url: 'http://localhost:4741/orders/' + store.openOrderId,
+            url: config.apiUrl + '/orders/' + store.openOrderId,
             headers: {
               'Authorization': 'Token token=' + store.user.token
             },
@@ -42,13 +44,13 @@ const addHandlers = function () {
         .then((response) => {
           // success on closing order then we
           // open new order
-          console.log('response from closing order', response)
+          // console.log('response from closing order', response)
           return ordersApi.create()
         })
         .then((response) => {
           // succes on open new order
           store.openOrderId = response.order._id
-          console.log('response from opening new order', response)
+          // console.log('response from opening new order', response)
 
           $('#state-credentials').addClass('d-none')
           $('#login-button').addClass('d-none')
@@ -59,7 +61,9 @@ const addHandlers = function () {
           $('#shopping-cart-button').removeClass('d-none')
           $('#previous-orders-button').removeClass('d-none')
         })
-        .catch(console.err)
+        .catch((err) => {
+          messageModal('ERROR: ' + err, 'fail')
+        })
     }
   })
 
