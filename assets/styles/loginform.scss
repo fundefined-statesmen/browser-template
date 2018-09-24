@@ -29,7 +29,10 @@
         border: 0;
         border-bottom: 1px solid #ccc;
         border-radius: 0px;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 2px;
         border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 2px;
       }
       & button {
         margin-top: 15px;
@@ -37,4 +40,12 @@
       }
     }
   }
+}
+
+@media only screen and (max-width: 800px) {
+    .state-credentials, .state-change-password {
+        grid-column: 1;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 0px;g
+    }
 }
