@@ -26,6 +26,7 @@ const signInSuccess = function () {
   $('#state-credentials').addClass('d-none')
   $('#login-button').addClass('d-none')
   $('#state-products').removeClass('d-none')
+  $('#delete-account-button').removeClass('d-none')
   $('#change-password-button').removeClass('d-none')
   $('#sign-out-button').removeClass('d-none')
   $('#shopping-cart-button').removeClass('d-none')
@@ -53,16 +54,38 @@ const signOutSuccess = function () {
   messageModal('Signed Out', 'success')
   $('#login-button').removeClass('d-none')
   $('#state-products').removeClass('d-none')
+  $('#delete-account-button').addClass('d-none')
   $('#change-password-button').addClass('d-none')
   $('#sign-out-button').addClass('d-none')
   $('#shopping-cart-button').addClass('d-none')
   $('#previous-orders-button').addClass('d-none')
   $('#state-shopping-cart').addClass('d-none')
   $('#state-previous-orders').addClass('d-none')
+  $('#change-password-form input').val('')
+  $('#change-password-form').addClass('d-none')
 }
 
 const signOutFail = function () {
   messageModal('Sign out fail', 'fail')
+}
+
+const deleteAccountFail = function () {
+  messageModal('Account Delete Failed', 'fail')
+}
+
+const accountDeleted = function () {
+  messageModal('Account Deleted', 'success')
+  $('#login-button').removeClass('d-none')
+  $('#state-products').removeClass('d-none')
+  $('#delete-account-button').addClass('d-none')
+  $('#change-password-button').addClass('d-none')
+  $('#sign-out-button').addClass('d-none')
+  $('#shopping-cart-button').addClass('d-none')
+  $('#previous-orders-button').addClass('d-none')
+  $('#state-shopping-cart').addClass('d-none')
+  $('#state-previous-orders').addClass('d-none')
+  $('#change-password-form input').val('')
+  $('#change-password-form').addClass('d-none')
 }
 
 // getOpenOrder
@@ -104,5 +127,7 @@ module.exports = {
   showCredentials,
   createOpenOrderSuccess,
   createOpenOrderFail,
-  showChangePasswordForm
+  showChangePasswordForm,
+  deleteAccountFail,
+  accountDeleted
 }
