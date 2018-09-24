@@ -19,7 +19,7 @@ const onAddToCart = function (event) {
     authUI.showCredentials()
     return
   }
-  const productId = $(event.target).parent().attr('data-id')
+  const productId = $(event.target).closest('.product').attr('data-id')
   // create line item with product id
   // get open order id from store
   // update order with line item id
@@ -34,11 +34,11 @@ const onAddToCart = function (event) {
       return orderAPI.update(data)
     })
     .then(ui.onAddToCart)
-    .catch((err) => { console.err(err) })
+    .catch((err) => { console.error(err) })
 }
 
 const addHandlers = function () {
-  $('#products').on('click', 'button', onAddToCart)
+  $('#products').on('click', '.addToCart', onAddToCart)
   onGetAllProducts()
 }
 
