@@ -34,7 +34,7 @@ const create = function () {
 }
 
 const update = function (data) {
-  console.log('data.order', data.order)
+  // console.log('data.order', data.order)
   return $.ajax({
     url: config.apiUrl + '/orders/' + data.id,
     method: 'PATCH',
