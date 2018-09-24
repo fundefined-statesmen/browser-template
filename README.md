@@ -42,10 +42,10 @@ The team had over come many challenges. At first, we were on two different path,
   - Signed user can see current order that haven’t checkout
 
 # Wireframes
-  ![Wireframes](https://imgur.com/RwvrNjK)
-  ![Wireframes](https://imgur.com/hlzfhbB)
-  ![Wireframes](https://imgur.com/1FLbNin)
-  ![Wireframes](https://imgur.com/FLDcmp0)
+  ![Imgur](https://i.imgur.com/xaat0te.png)
+  ![Imgur](https://i.imgur.com/7EnWFfq.png)
+  ![Imgur](https://i.imgur.com/jTGAUUx.png)
+  ![Imgur](https://i.imgur.com/NAnsOky.png)
 
 # Furture Plans
   - Unit Test
