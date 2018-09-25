@@ -9,6 +9,17 @@ const getAllProducts = function () {
   })
 }
 
+const search = function (terms) {
+  return $.ajax({
+    url: 'http://localhost:4741/search',
+    method: 'GET',
+    data: {
+      terms
+    }
+  })
+}
+
 module.exports = {
-  getAllProducts
+  getAllProducts,
+  search
 }

@@ -7,7 +7,7 @@ const store = require('../store')
 const orderAPI = require('../orders/api')
 const authUI = require('../auth/ui')
 
-const onGetAllProducts = function () {
+const onGetAllProducts = function (event) {
   api.getAllProducts()
     .then(ui.onGetAllProductsSuccess)
     .catch(ui.onGetAllProductsFail)
@@ -37,8 +37,19 @@ const onAddToCart = function (event) {
     .catch((err) => { console.error(err) })
 }
 
+const onSearch = function (event) {
+  event.preventDefault()
+  const terms = $(event.target).children('input').val()
+  console.log('terms: ', terms)
+  api.search(terms)
+    .then(ui.searchResult)
+    .catch((err) => { console.error(err) })
+}
+
 const addHandlers = function () {
   $('#products').on('click', '.addToCart', onAddToCart)
+  $('.searchbar').on('submit', onSearch)
+  $('.cancel-button').on('click', onGetAllProducts)
   onGetAllProducts()
 }
 
