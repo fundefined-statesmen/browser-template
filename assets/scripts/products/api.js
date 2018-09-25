@@ -11,7 +11,7 @@ const getAllProducts = function () {
 
 const search = function (terms) {
   return $.ajax({
-    url: 'http://localhost:4741/search',
+    url: config.apiUrl + '/products',
     method: 'GET',
     data: {
       terms

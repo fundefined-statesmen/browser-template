@@ -106,14 +106,9 @@ const createOpenOrderFail = function () {
 
 // hide/show stuff when login-button is clicked
 const showCredentials = function () {
-<<<<<<< Updated upstream
-  $('#state-credentials').toggleClass('d-none')
-  $('#state-products').toggleClass('d-none')
-=======
   $('#state-credentials').removeClass('d-none')
   $('#state-products').addClass('d-none')
   $('.searchbar').addClass('d-none')
->>>>>>> Stashed changes
 }
 
 const showChangePasswordForm = function () {
