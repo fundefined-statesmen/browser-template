@@ -31,8 +31,18 @@ const onAddToCart = function (response) {
   messageModal('Added to Cart', 'success')
 }
 
+const searchResult = function (response) {
+  $('.searchbar input').val('')
+  if (response.products.length === 0) {
+    $('#products').html('<h6>No product found</h6>')
+  } else {
+    onGetAllProductsSuccess(response)
+  }
+}
+
 module.exports = {
   onGetAllProductsSuccess,
   onGetAllProductsFail,
-  onAddToCart
+  onAddToCart,
+  searchResult
 }
