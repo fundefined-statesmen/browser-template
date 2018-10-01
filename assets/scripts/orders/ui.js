@@ -57,7 +57,8 @@ const showPreviousOrders = function (response) {
       return order
     }).filter((order) => order.status === 'closed')
     orderElement = previousOrdersTemplate({orders})
-  } else {
+  }
+  if (orders.length === 0) {
     orderElement = 'No previous orders'
   }
   $('#previous-orders').html(orderElement)
