@@ -3,6 +3,7 @@
 const api = require('./api')
 const ui = require('./ui')
 const store = require('../store.js')
+const messageModal = require('../helpers/modalMessage')
 
 const showCart = function (event) {
   event.preventDefault()
@@ -28,7 +29,9 @@ const removeProduct = function (event) {
       ui.removeProductSuccess(lineitemId, $(event.target).siblings('.product-price'))
       return response
     })
-    .catch(console.err)
+    .catch((err) => {
+      messageModal("Can't remove " + err, 'fail')
+    })
 }
 
 const addHandlers = function () {

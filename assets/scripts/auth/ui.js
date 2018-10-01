@@ -1,14 +1,6 @@
 'use strict'
 
-const messageModal = (message, status) => {
-  // Modal status: normal, success, fail
-  $('#message-modal .message-modal-content').text(message)
-  $('#message-modal .message-modal-content').attr('status', status)
-  $('#message-modal').removeClass('d-none')
-  setTimeout(() => {
-    $('#message-modal').addClass('d-none')
-  }, 1500)
-}
+const messageModal = require('../helpers/modalMessage')
 
 // Sign Up
 const signUpSuccess = function () {
@@ -62,7 +54,7 @@ const signOutSuccess = function () {
   $('#state-shopping-cart').addClass('d-none')
   $('#state-previous-orders').addClass('d-none')
   $('#change-password-form input').val('')
-  $('#change-password-form').addClass('d-none')
+  $('#state-change-password').addClass('d-none')
 }
 
 const signOutFail = function () {
@@ -105,12 +97,15 @@ const createOpenOrderFail = function () {
 
 // hide/show stuff when login-button is clicked
 const showCredentials = function () {
-  $('#state-credentials').toggleClass('d-none')
-  $('#state-products').toggleClass('d-none')
+  $('#state-credentials').removeClass('d-none')
+  $('#state-products').addClass('d-none')
 }
 
 const showChangePasswordForm = function () {
-  $('#state-change-password').toggleClass('d-none')
+  $('#state-change-password').removeClass('d-none')
+  $('#state-shopping-cart').addClass('d-none')
+  $('#state-previous-orders').addClass('d-none')
+  $('#state-products').addClass('d-none')
 }
 
 module.exports = {

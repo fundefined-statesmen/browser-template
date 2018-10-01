@@ -1,16 +1,7 @@
 'use strict'
 
 const productsTemplate = require('../handlebars/products.handlebars')
-
-const messageModal = (message, status) => {
-  // Modal status: normal, success, fail
-  $('#message-modal .message-modal-content').text(message)
-  $('#message-modal .message-modal-content').attr('status', status)
-  $('#message-modal').removeClass('d-none')
-  setTimeout(() => {
-    $('#message-modal').addClass('d-none')
-  }, 1500)
-}
+const messageModal = require('../helpers/modalMessage')
 
 // All Products
 const onGetAllProductsSuccess = function (response) {
@@ -21,6 +12,7 @@ const onGetAllProductsSuccess = function (response) {
   // console.log('response.products', response.products)
   const productsTemplateHTML = productsTemplate({products: response.products})
   $('#products').html(productsTemplateHTML)
+  $('#state-change-password').addClass('d-none')
 }
 
 const onGetAllProductsFail = function (response) {

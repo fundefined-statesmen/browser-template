@@ -6,6 +6,7 @@ const lineItemApi = require('../lineitems/api')
 const store = require('../store')
 const orderAPI = require('../orders/api')
 const authUI = require('../auth/ui')
+const messageModal = require('../helpers/modalMessage')
 
 const onGetAllProducts = function () {
   api.getAllProducts()
@@ -34,7 +35,9 @@ const onAddToCart = function (event) {
       return orderAPI.update(data)
     })
     .then(ui.onAddToCart)
-    .catch((err) => { console.error(err) })
+    .catch((err) => {
+      messageModal("Can't remove " + err, 'fail')
+    })
 }
 
 const addHandlers = function () {
